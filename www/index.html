@@ -165,35 +165,36 @@
 </head>
 
     <body>
-        <div id="afui">
-            <!-- this is the splashscreen you see. -->
-            <div id="splashscreen" class='ui-loader heavy'>
-                App Framework
-                <br>
-                <br>    <span class='ui-icon ui-icon-loading spin'></span>
-                <h1>Starting app</h1>
-
-            </div>
-            <div id="header">
-                <a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>                 
-            </div>
-            <div id="content">
-                <div title='Welcome' id="main" class="panel" selected="true" data-load="loadedPanel" data-unload="unloadedPanel" data-tab="navbar_home">
-                    <h2 class='expanded' onclick='showHide(this,"main_info");'>Welcome</h2>
-					
-                    
-                </div>
-                <!---------------------------------------------->
-                <div title="AppFramework" id="af" class="panel" data-nav="menu_AppFramework" data-header="testheader">
-                    <!-- <header><span>This is an inline header in a panel.  Below is an inline footer</span></header>-->
-                        <h2 class='expanded' onclick='showHide(this,"AppFramework_info");'>Page 2</h2>
+        <div id="afui" class='ios'>
+          
+			<div id="header"></div>
+			          
+			<div id="content">
+				          
+				<div class="panel" title="Main" data-nav="nav_0" id="page_0" selected="selected">
+					<a class="button" href="#" style="" data-appbuilder-object="button" data-position="static">Hello World</a>
 				</div>
-        	<footer>
-  				<a class="icon home" href="#main">Home</a>
-				  <a class="icon settings" href="#af">Page 2</a>
-				  <a class="icon bug" href="#bugs">Bugs</a>
-				  <a class="icon info" href="#bugs">About</a>
-			</footer>
+				<div class="panel" title="Camera" data-nav="nav_0" id="page_1" data-appbuilder-object="page"></div>
+			</div>
+			          
+			<div id="navbar">
+				<a href="#page_0" class="icon home">Home</a><a href="#page_1" class="icon camera">Camera</a>
+			</div>
+			        
+			<header id="header_0" data-appbuilder-object="header">
+				     <a id="backButton" href="#" class="button back" style="visibility: visible; ">Back</a>
+				<h1 id="pageTitle" class="">
+					test
+				</h1>
+				     
+			</header>
+			<nav id="nav_0" data-appbuilder-object="nav">
+				     
+				<h1>
+					Side Menu
+				</h1>
+				     
+			</nav>
         </div>
 
     </body>
