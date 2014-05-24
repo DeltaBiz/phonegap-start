@@ -1,201 +1,75 @@
 ﻿<!DOCTYPE html>
 <!--HTML5 doctype-->
 <html>
-
     <head>
-        <script>
-        (function() {
-    if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
-        var msViewportStyle = document.createElement("style");
-        msViewportStyle.appendChild(
-            document.createTextNode("@-ms-viewport{width:auto!important}")
-        );
-        document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-    }
-})();
-</script>
-
-        <title>App Framework Kitchen Sink</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="stylesheet" type="text/css" href="css/icons.css" />    
- 
-       <!--   
-     <link rel="stylesheet" type="text/css" href="css/af.ui.css" title="default" />
-  -->
-      <link rel="stylesheet" type="text/css" href="css/main.css"  />
-      <link rel="stylesheet" type="text/css" href="css/appframework.css"  />
-      <link rel="stylesheet" type="text/css" href="css/lists.css"  />
-      <link rel="stylesheet" type="text/css" href="css/forms.css"  />
-      <link rel="stylesheet" type="text/css" href="css/buttons.css"  />        
-      <link rel="stylesheet" type="text/css" href="css/badges.css"  />        
-      <link rel="stylesheet" type="text/css" href="css/grid.css"  />
-
-      <link rel="stylesheet" type="text/css" href="css/android.css"  />
-      <link rel="stylesheet" type="text/css" href="css/win8.css"  />
-      <link rel="stylesheet" type="text/css" href="css/bb.css"  />
-      <link rel="stylesheet" type="text/css" href="css/ios.css"  />
-      <link rel="stylesheet" type="text/css" href="css/ios7.css"  />
-      <link rel="stylesheet" type="text/css" href="css/tizen.css"  />
-        
-      <link rel="stylesheet" type="text/css" href="plugins/css/af.actionsheet.css"  />
-      <link rel="stylesheet" type="text/css" href="plugins/css/af.popup.css"  />
-      <link rel="stylesheet" type="text/css" href="plugins/css/af.scroller.css"  />
-      <link rel="stylesheet" type="text/css" href="plugins/css/af.selectBox.css"  />        
-        
-        <!-- uncomment for intel.xdk apps 
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
         <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
-        <script type="text/javascript" charset="utf-8" src="xhr.js"></script>
-        -->
-        <script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <!-- include af.desktopBrowsers.js on desktop browsers only -->
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+
+        <script type="text/javascript" language="javascript">
+            // This event handler is fired once the AppMobi libraries are ready
+            function onDeviceReady() {
+                //use AppMobi viewport to handle device resolution differences if you want
+               
+                //hide splash screen now that our app is ready to run
+                AppMobi.device.hideSplashScreen();
+                setTimeout(function(){
+                    $.ui.launch();
+                },50);
+            }
+
+            //initial event handler to detect when appMobi is ready to roll
+            document.addEventListener("appMobi.device.ready",onDeviceReady,false);
+        </script> 
+
+        <script src="js/appframework.ui.min.js"></script>
         <script>
-
-            function loadedPanel(what) {
-                //We are going to set the badge as the number of li elements inside the target
-                $.ui.updateBadge("#aflink", $("#af").find("li").length);
-            }
-
-
-            function unloadedPanel(what) {
-                console.log("unloaded " + what.id);
-            }
-
-            if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
-                var script = document.createElement("script");
-                script.src = "plugins/af.desktopBrowsers.js";
-                var tag = $("head").append(script);
-                //$.os.desktop=true;
-            }
-
-          //  $.feat.nativeTouchScroll=true;
-          
-        </script>        
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.passwordBox.js"></script>          
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.scroller.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.selectBox.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.touchEvents.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.touchLayer.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.popup.js"></script>
-
-        <script type="text/javascript" charset="utf-8" src="./ui/appframework.ui.js"></script>
-        <!-- <script type="text/javascript" charset="utf-8" src="./ui/transitions/all.js"></script> -->
-        <script type="text/javascript" charset="utf-8" src="./ui/transitions/fade.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./ui/transitions/flip.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./ui/transitions/pop.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slide.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideDown.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideUp.js"></script>
-        <script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
-        
-
-        <script type="text/javascript">
-            /* This function runs once the page is loaded, but intel.xdk is not yet active */
-            //$.ui.animateHeaders=false;
-             var search=document.location.search.toLowerCase().replace("?","");
-             //if(!search)
+            $.ui.autoLaunch=false;
             $.ui.useOSThemes=true;
-            if(search.length>0) //Android fix has too many buggy issues on iOS - can't preview with $.os.android
-            {
-
-               $.ui.useOSThemes=true;
-                if(search=="win8")
-                    $.os.ie=true;
-                $.ui.ready(function(){
-                    $("#afui").get(0).className=search;
-                });
-            }
-            
-            var webRoot = "./";
-            // $.os.android=true;
-            //$.ui.autoLaunch = false;
-            $.ui.openLinksNewTab = false;
-            $.ui.splitview=false;
-            
-
+            $.ui.blockPageScroll();
             $(document).ready(function(){
-                  // $.ui.launch();
-
+                if($.ui.useOSThemes&&!$.os.ios&&$("#afui").get(0).className!=="ios")
+                $("#afui").removeClass("ios");
             });
-            
-            /* This code is used to run as soon as intel.xdk activates */
-            var onDeviceReady = function () {
-                intel.xdk.device.setRotateOrientation("portrait");
-                intel.xdk.device.setAutoRotate(false);
-                webRoot = intel.xdk.webRoot + "";
-                //hide splash screen
-                intel.xdk.device.hideSplashScreen();
-                $.ui.blockPageScroll(); //block the page from scrolling at the header/footer
-            };
-            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
-
-            function showHide(obj, objToHide) {
-                var el = $("#" + objToHide)[0];
-
-                if (obj.className == "expanded") {
-                    obj.className = "collapsed";
-                } else {
-                    obj.className = "expanded";
-                }
-                $(el).toggle();
-
-            }
-
-
-            if($.os.android||$.os.ie||search=="android"){
-                $.ui.ready(function(){
-                    $("#main .list").append("<li><a id='toggleAndroidTheme'>Toggle Theme Color</a></li>");
-                    var $el=$("#afui");
-                    $("#toggleAndroidTheme").bind("click",function(e){
-                        if($el.hasClass("light"))
-                            $el.removeClass("light");
-                        else
-                            $el.addClass("light");
-                    });
-                });
-            }                        
         </script>
-
-</head>
-
+        <link href="css/icons.css" rel="stylesheet" type="text/css"></link>
+        <link href="css/af.ui.css" rel="stylesheet" type="text/css"></link>
+    </head>
     <body>
         <div id="afui" class='ios'>
           
-			<div id="header"></div>
-			          
-			<div id="content">
-				          
-				<div class="panel" title="Main" data-nav="nav_0" id="page_0" selected="selected">
-					<a class="button" href="#" style="" data-appbuilder-object="button" data-position="static">Hello World</a>
-				</div>
-				<div class="panel" title="Camera" data-nav="nav_0" id="page_1" data-appbuilder-object="page"></div>
-			</div>
-			          
-			<div id="navbar">
-				<a href="#page_0" class="icon home">Home</a><a href="#page_1" class="icon camera">Camera</a>
-			</div>
-			        
-			<header id="header_0" data-appbuilder-object="header">
-				     <a id="backButton" href="#" class="button back" style="visibility: visible; ">Back</a>
-				<h1 id="pageTitle" class="">
-					test
-				</h1>
-				     
-			</header>
-			<nav id="nav_0" data-appbuilder-object="nav">
-				     
-				<h1>
-					Side Menu
-				</h1>
-				     
-			</nav>
+<div id="header"></div>
+          
+<div id="content">
+	          
+	<div class="panel" title="Main" data-nav="nav_0" id="page_0" selected="selected">
+		<a class="button" href="#" style="" data-appbuilder-object="button" data-position="static">Hello World</a>
+	</div>
+	<div class="panel" title="Camera" data-nav="nav_0" id="page_1" data-appbuilder-object="page"></div>
+</div>
+          
+<div id="navbar">
+	<a href="#page_0" class="icon home">Home</a><a href="#page_1" class="icon camera">Camera</a>
+</div>
+        
+<header id="header_0" data-appbuilder-object="header">
+	     <a id="backButton" href="#" class="button back" style="visibility: visible; ">Back</a>
+	<h1 id="pageTitle" class="">
+		test
+	</h1>
+	     
+</header>
+<nav id="nav_0" data-appbuilder-object="nav">
+	     
+	<h1>
+		Side Menu
+	</h1>
+	     
+</nav>
         </div>
-
     </body>
 </html>
